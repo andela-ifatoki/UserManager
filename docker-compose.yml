@@ -1,0 +1,22 @@
+version: '2'
+
+networks:
+  app-tier:
+    driver: bridge
+
+services:
+  mongodb:
+    image: 'bitnami/mongodb:latest'
+    networks:
+      - app-tier
+    volumes:
+      - /datastore:/bitnami
+  app:
+    image: 'user_manager_app:latest'
+    depends_on:
+      - 'mongodb'
+    networks:
+      - app-tier
+    ports:
+      - "3000:3000"
+    command: ["./wait-for-me.sh", "mongodb", "27017", "npm", "start"]
