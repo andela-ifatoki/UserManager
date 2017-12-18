@@ -19,4 +19,4 @@ services:
       - app-tier
     ports:
       - "3000:3000"
-    command: ["./wait-for-it.sh", "mongodb:27017", "--", "npm", "start"]
+    command: ["./wait-for-me.sh", "mongodb", "27017", "npm", "start"]

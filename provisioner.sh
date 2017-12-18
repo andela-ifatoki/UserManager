@@ -10,7 +10,7 @@ install_docker() {
   else
     echo "Installing docker"
     sudo apt-get update
-    sudo apt-get install \
+    sudo apt-get -y install \
       apt-transport-https \
       ca-certificates \
       curl \
@@ -47,6 +47,7 @@ setup_repo() {
     git clone https://github.com/andela-ifatoki/UserManager.git
   fi
   cd /home/ubuntu/UserManager
+  git checkout fake
   echo "Repo Setup Completed"
 }
 
